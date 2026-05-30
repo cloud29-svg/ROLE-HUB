@@ -5,13 +5,13 @@ import { useAuth } from "../context/AuthContext";
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [role, setRole] = useState<"Admin" | "Editor" | "Viewer">("Viewer");
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  const { login } = useAuth();   
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username.trim()) {
-      login(username, role);
+    if (username.trim() !== "") {
+      login({ username, role });  
       navigate("/dashboard");
     }
   };
@@ -31,7 +31,7 @@ export const Login = () => {
       <div>
         <select
           value={role}
-          onChange={(e) => setRole(e.target.value as any)}
+          onChange={(e) => setRole(e.target.value as "Admin" | "Editor" | "Viewer")}
         >
           <option value="Admin">Admin</option>
           <option value="Editor">Editor</option>
