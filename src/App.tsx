@@ -1,5 +1,5 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvider";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Navbar } from "./components/Navbar";
 import { Login } from "./pages/Login";
@@ -9,7 +9,7 @@ import { Settings } from "./pages/Settings";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AuthProvider>
         <Navbar />
         <Routes>
@@ -41,7 +41,7 @@ function App() {
           <Route path="*" element={<Login />} />
         </Routes>
       </AuthProvider>
-    </HashRouter>
+   </BrowserRouter>
   );
 }
 
